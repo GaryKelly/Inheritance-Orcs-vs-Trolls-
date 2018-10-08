@@ -1,2 +1,4 @@
 ﻿  Source.cpp
-  Inheritance.vcxproj -> C:\Users\Gary\Desktop\Inheritance-Orcs-vs-Trolls-\Inheritance\Debug\Inheritance.exe
+c:\users\c00207281\desktop\inheritance-orcs-vs-trolls-\inheritance\inheritance\source.cpp(127): warning C4715: 'chooseActionOrc': not all control paths return a value
+c:\users\c00207281\desktop\inheritance-orcs-vs-trolls-\inheritance\inheritance\source.cpp(158): warning C4715: 'chooseActionTroll': not all control paths return a value
+  Inheritance.vcxproj -> C:\Users\C00207281\Desktop\Inheritance-Orcs-vs-Trolls-\Inheritance\Debug\Inheritance.exe
