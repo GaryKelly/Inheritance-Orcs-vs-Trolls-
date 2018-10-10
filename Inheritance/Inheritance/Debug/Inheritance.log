@@ -1,6 +1,0 @@
-﻿  Source.cpp
-c:\users\gary\desktop\inheritance-orcs-vs-trolls-\inheritance\inheritance\source.cpp(74): warning C4101: 'com': unreferenced local variable
-c:\users\gary\desktop\inheritance-orcs-vs-trolls-\inheritance\inheritance\source.cpp(73): warning C4101: 'player': unreferenced local variable
-c:\users\gary\desktop\inheritance-orcs-vs-trolls-\inheritance\inheritance\source.cpp(178): warning C4715: 'chooseActionOrc': not all control paths return a value
-c:\users\gary\desktop\inheritance-orcs-vs-trolls-\inheritance\inheritance\source.cpp(209): warning C4715: 'chooseActionTroll': not all control paths return a value
-  Inheritance.vcxproj -> C:\Users\Gary\Desktop\Inheritance-Orcs-vs-Trolls-\Inheritance\Debug\Inheritance.exe

@@ -5,27 +5,14 @@
 #include "Troll.h"
 #include "Orc.h"
 #include <iostream>
-#include <ctime>
-void characterChoose(bool &p_orc, bool &p_troll);
-int chooseActionOrc(int t_num );
-int chooseActionTroll(int t_num);
+#include <time.h>
+#include <cstdlib>
+void characterChoose();
+void chooseActionPlayer();
+void enemyActionChoose();
 
 
-enum class AttackType 
-{
-	MELEE,
-	SPELL
-};
 
-struct Attacks
-{
-	AttackType attacking;
-};
-
-struct Player
-{
-	
-}Player;
 
 enum class playerType
 {
@@ -33,9 +20,20 @@ enum class playerType
 	TROLL
 };
 
+struct Player
+{
+	playerType Race;
+};
+
+
+Player player;
+Player com;
+Character *characters[2];
+
+
 int main()
 {
-	Player player;
+	
 	bool gameRun{ true };
 	int actionOrc{ 0 };
 	int actionTroll{ 0 };
@@ -46,39 +44,10 @@ int main()
 	std::cout << "ORCS VS TROLLS" << std::endl;
 	std::cout << "FIGHT" << std::endl;
 	
-	Character *characters[2];
 	characters[0] = new Orc;
 	characters[1] = new Troll;
-	characterChoose(playerAsOrc, playerAsTroll);
-	while (gameRun)
-	{
-		if (playerAsOrc)
-		{
-			actionOrc = chooseActionOrc(1);
-			actionTroll = chooseActionTroll(2);
-		}
-		else if (playerAsTroll)
-		{
-			actionTroll = chooseActionTroll(1);
-			actionOrc = chooseActionOrc(2);
-		}
-		if (actionOrc == 1)
-		{
-
-		}
-		else if (actionOrc == 2)
-		{
-
-		}
-		if (actionTroll == 1)
-		{
-
-		}
-		else if (actionTroll == 2)
-		{
-
-		}
-	}
+	
+	characterChoose();
 
 	
 	system("pause");
@@ -87,7 +56,7 @@ int main()
 
 
 
-void characterChoose(bool &p_orc, bool &p_troll)
+void characterChoose()
 {
 	char playerChoose{};
 	 
@@ -100,80 +69,81 @@ void characterChoose(bool &p_orc, bool &p_troll)
 	}
 	if (playerChoose == 'o')
 	{
-		
+		player.Race = playerType::ORC;
+		com.Race = playerType::TROLL;
+		std::cout << "You have chosen orc" << std::endl;
 	}
 	else
 	{
-		
+		player.Race = playerType::TROLL;
+		com.Race = playerType::ORC;
+		std::cout << "You have chosen orc" << std::endl;
 	}
 }
 
-int chooseActionOrc(int t_num)
+void chooseActionPlayer()
 {
 	char action{};
-	if (t_num ==1)
-	{
-		std::cout << "Choose Action: Attack(a) or Defend(d)" << std::endl;
-		std::cin >> action;
-		while (action != 'a' && action != 'd')
-		{
-			std::cout << "Invalid input" << std::endl;
-			std::cout << "Choose Action: Attack(a) or Defend(d)" << std::endl;
-			std::cin >> action;
-		}
-		if (action == 'a')
-		{
-			return 1;
-		}
-		else if (action == 'd')
-		{
-			return 2;
-		}
-
-
-	}
-	else
-	{
-		return (rand() % 2) + 1;
+	std::cout << "Choose an Action: a for attack, d for defend" << std::endl;
+	std::cin >> action;
 	
-	}
-}
-
-int chooseActionTroll(int t_num)
-{
-	char action{};
-	if (t_num == 1)
+	while (action != 'a' && action != 'd')
 	{
-		std::cout << "Choose Action: Attack(a) or Defend(d)" << std::endl;
+		std::cout << "Invalid action. a for attack, d for defend" << std::endl;
 		std::cin >> action;
-		while (action != 'a' && action != 'd')
-		{
-			std::cout << "Invalid input" << std::endl;
-			std::cout << "Choose Action: Attack(a) or Defend(d)" << std::endl;
-			std::cin >> action;
-		}
+		
+	}
+	if (player.Race == playerType::ORC)
+	{
 		if (action == 'a')
 		{
-			return 1;
+			characters[0]->attack(0);
 		}
-		else if (action == 'd')
+		else
 		{
-			return 2;
+			characters[0]->defend(0);
 		}
-
-
+	}
+	
+	if (player.Race == playerType::TROLL)
+	{
+		if (action == 'a')
+		{
+			characters[1]->attack(0);
+		}
 	}
 	else
 	{
-		return (rand() % 2) + 1;
-
+		characters[1]->defend(0);
 	}
 }
 
-
-
-
-
-
-
+void enemyActionChoose()
+{
+	unsigned int actionNum = rand() % 2;
+	if (player.Race == playerType::ORC)
+	{
+		if (actionNum == 0)
+		{
+			characters[0]->attack(0);
+		}
+		else
+		{
+			characters[0]->defend(0);
+		}
+	}
+	
+	if (player.Race == playerType::TROLL)
+	{
+		if (actionNum == 0)
+		{
+			characters[1]->attack(0);
+		}
+		else
+		{
+			characters[1]->defend(0);
+		}
+	}
+	
+}
 

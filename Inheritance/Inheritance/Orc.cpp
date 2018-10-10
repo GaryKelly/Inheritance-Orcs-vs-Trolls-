@@ -1,11 +1,11 @@
 #include "Orc.h"
 
-void Orc::attack()
+void Orc::attack(int t_num)
 {
 
 }
 
-void Orc::defend()
+void Orc::defend(int t_num)
 {
 
 }

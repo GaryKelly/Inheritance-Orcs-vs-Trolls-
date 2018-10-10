@@ -1,10 +1,10 @@
 #include "Troll.h"
 
-void Troll::attack()
+void Troll::attack(int t_num)
 {
 }
 
-void Troll::defend()
+void Troll::defend(int t_num)
 {
 }
 

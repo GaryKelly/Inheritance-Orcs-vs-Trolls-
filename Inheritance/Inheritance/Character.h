@@ -13,9 +13,11 @@ class Character
 	bool m_melee{};
 public:
 	Character();
-	virtual void attack() = 0;
+	virtual void attack(int t_num) = 0;
 	virtual void hit() = 0;
 	virtual void cast() = 0;
-	virtual void defend() = 0;
-	int getHealth() { return m_health; };
+	virtual void defend(int t_num) = 0;
+	virtual int getHealth() { return m_health; };
+	virtual int getNoAttacks() { return m_attacksLeft; };
+	virtual int getNoshields() { return m_shields; };
 };
