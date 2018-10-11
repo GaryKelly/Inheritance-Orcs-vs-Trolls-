@@ -48,6 +48,26 @@ int main()
 	characters[1] = new Troll;
 	
 	characterChoose();
+	while (gameRun)
+	{
+		chooseActionPlayer();
+		enemyActionChoose();
+		characters[0]->takeDamage(characters[1]->getDamage());
+		characters[1]->takeDamage(characters[0]->getDamage());
+		std::cout << "Orc Health: " << characters[0]->getHealth() << std::endl;
+		std::cout << "Troll Health: " << characters[1]->getHealth() << std::endl;
+		if (characters[0]->getHealth()<=0)
+		{
+			std::cout << "Orcs have lost" << std::endl;
+			gameRun = false;
+		}
+		else if (characters[1]->getHealth() <= 0 )
+		{
+			std::cout << "Trolls have lost" << std::endl;
+			gameRun = false;
+		}
+	}
+	
 
 	
 	system("pause");
